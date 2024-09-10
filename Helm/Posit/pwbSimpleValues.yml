@@ -1,0 +1,19 @@
+#Posit Workbench Helm chart override
+#Create Rstudio User
+userCreate: true
+userName: "rstudio"
+userPassword: "rstudio"
+#License key omitted
+license:
+  key: "AAAA-BBBB-CCCC-DDDD-EEEE-FFFF-GGGG"
+#Home storage for rstudio user
+#Stored within /home 
+homeStorage:
+  create: true
+  name: "home"
+  path: "/home"
+  mount: true
+  accessModes:
+    - ReadWriteMany
+  requests:
+    storage: "2Gi"
