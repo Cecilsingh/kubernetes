@@ -1,0 +1,6 @@
+#StorageClass Kubernetes object for EFS CSI provisioner
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: efs-sc
+provisioner: efs.csi.aws.com
