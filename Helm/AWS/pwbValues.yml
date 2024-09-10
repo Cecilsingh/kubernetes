@@ -1,0 +1,27 @@
+#Posit Workbench Helm chart override
+#Create Rstudio User
+userCreate: true
+userName: "rstudio"
+userPassword: "rstudio"
+#License key omitted
+license:
+  key: "AAAA-BBBB-CCCC-DDDD-EEEE-FFFF-GGGG"
+#Home storage for rstudio user
+#Stored within /home on EFS
+homeStorage:
+  create: false
+  name: "efs-claim"
+  path: "/home"
+  mount: true
+  storageClassName: "efs-sc"
+  accessModes:
+    - ReadWriteMany
+  requests:
+    storage: "2Gi"
+#Simple config setting umask to 007
+config:
+  server:
+    rserver.conf:
+      server-set-umask: 0
+    rsession-profile:
+      umask 007
