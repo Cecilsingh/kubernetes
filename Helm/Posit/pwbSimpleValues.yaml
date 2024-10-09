@@ -10,7 +10,6 @@ license:
 #Stored within /home 
 homeStorage:
   create: true
-  name: "home"
   path: "/home"
   mount: true
   accessModes:
