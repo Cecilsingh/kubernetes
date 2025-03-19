@@ -1,0 +1,28 @@
+sharedStorage:
+  # -- Whether to create the persistentVolumeClaim for shared storage
+  create: true
+  # -- The name of the pvc. By default, computes a value from the release name
+  name: "efs-pvc"
+  # -- Whether the persistentVolumeClaim should be mounted (even if not created)
+  mount: true
+  # -- The path to mount the sharedStorage claim within the Connect pod
+  path: /var/lib/rstudio-connect
+  # -- Whether the persistentVolumeClaim should be mounted to the content pods created by the Launcher
+  mountContent: true
+  # -- The type of storage to use. Must allow ReadWriteMany
+  storageClassName: efs-sc
+  # -- A list of accessModes that are defined for the storage PVC (represented as YAML)
+  accessModes:
+    - ReadWriteMany
+  requests:
+    # -- The volume of storage to request for this persistent volume claim
+    storage: "3Gi"
+  # -- Annotations for the Persistent Volume Claim
+  annotations:
+    helm.sh/resource-policy: keep
+  # -- selector for PVC definition
+  #selector: {}
+  # -- the volumeName passed along to the persistentVolumeClaim. Optional
+  volumeName: "efs-pv"
+  # -- an optional subPath for the volume mount
+  subPath: ""
